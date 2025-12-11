@@ -36,7 +36,7 @@ def gray_code(ozgaruvchi):
         bin = str(bin)[1:]
         k_map.append(str(bin))
     return k_map
-print(gray_code(2))
+# print(gray_code(2))
 def main(ozgaruvchi):
     row_item = []
     column_item=[]

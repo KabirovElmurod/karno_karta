@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from . import main_karno
+from karno_karta.settings import ALLOWED_HOSTS, Url_http
+print(ALLOWED_HOSTS)
 # Create your views here.
 def index(request):
-    return render(request, 'test1.html')
+    return render(request, 'test1.html', {
+        'server_url': str(Url_http)+ALLOWED_HOSTS[0]
+    })
 
 def f_qiymatlar(request):
     if request.method == 'POST':
@@ -22,12 +26,12 @@ def f_qiymatlar(request):
         f_qiymatlari = []
         for item in f_qiymat_list:
             f_qiymatlari.append(int(f_qiymat_dict[item][0]))
-        print(f_qiymat_list)
-        print(f_qiymatlari)
+        # print(f_qiymat_list)
+        # print(f_qiymatlari)
         f_main, changer_1_qiymat, changer_2_qiymat = main_karno.web_f_qiymat(changer, f_qiymatlari, f_qiymat_list)
         print(f_main)
-        print('changer_1_qiymat =', changer_1_qiymat)
-        print('changer_2_qiymat =', changer_2_qiymat)
+        # print('changer_1_qiymat =', changer_1_qiymat)
+        # print('changer_2_qiymat =', changer_2_qiymat)
         mdnf, mknf = main_karno.web_karno_karto(changer, f_main)
         # print(mdnf)
         return JsonResponse({

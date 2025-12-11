@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-$-pns$x9x=!%b@0cexe9*wy6b+95#3w6ygci*7yedxrc6%k(*e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1:8000',
+    'karnomap.pythonanywhere.com',
+    '127.0.0.1',
+]
+
+Url_http = 'http://'
 
 
 # Application definition

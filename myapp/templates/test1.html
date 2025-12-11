@@ -366,7 +366,7 @@
             let csrftoken = getCookie('csrftoken')
 
             let formdata = new FormData(this)
-            let res = await fetch(`http://127.0.0.1:8000/son_input/`, {
+            let res = await fetch(`{{server_url}}/son_input/`, {
                 method : "POST",
                 headers:{
                     'X-CSRFToken' : csrftoken
@@ -451,7 +451,7 @@
             let csrftoken = getCookie('csrftoken')
 
             let formdata = new FormData(this)
-            let res = await fetch(`http://127.0.0.1:8000/f_qiymat_much/`, {
+            let res = await fetch(`{{server_url}}/f_qiymat_much/`, {
                 method : "POST",
                 headers:{
                     'X-CSRFToken' : csrftoken
@@ -480,7 +480,7 @@
             e.preventDefault()
             const csrftoken = getCookie('csrftoken');
             let formdata = new FormData(this)
-            let res  = await fetch(`http://127.0.0.1:8000/f_qiymatlar/`, {
+            let res  = await fetch(`{{server_url}}/f_qiymatlar/`, {
                 method: "POST",
                 headers: {
                     'X-CSRFToken': csrftoken,
