@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> -->
+
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: aliceblue;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container{
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.386);
+        background-color: white;
+        box-sizing: border-box;
+        /* text-align: center; */
+        /* justify-content: center; */
+    }
+    ul, li, a{
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        list-style: none;
+        
+    }
+    ul {
+        display: flex;
+        border-bottom: 2px solid rgb(194, 194, 194);
+        position: relative;
+        transition: all 3s linear;
+    }
+
+    ul::before{
+        content: '';
+        background-color: rgb(0, 0, 255);
+        bottom: 0;
+        left: var(--before-left, 0px);
+        width: var(--before-width, calc(100% / 4) );
+        height: 5px;
+        border-radius: 10px;
+        position: absolute;
+        transition: all 0.3s linear;
+        /* z-index: -1; */
+    }
+
+    ul li{
+        flex: 1;
+        text-align: center;
+        padding: 20px;
+        font-size: 20px;
+        border-radius: 10px;
+        transition: all 0.3s linear;
+        cursor: pointer;
+    }
+    ul li:hover{
+        background-color: aqua;
+    }
+
+    .f_qiymat{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        /* text-align: center; */
+    }
+    @media (max-width:830px) {
+        .f_qiymat{
+            display: block;
+        }
+    }
+    .f_qiymatlari{
+        /* background-color: aqua; */
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        justify-items: center;
+        align-items: center;
+    }
+    .f_qiymatlari div{
+        display: flex;
+        gap: 0px;
+        align-items: center;
+    }
+    .f_qiymatlari span {
+        font-size: 25px;
+        margin: 10px;
+        padding: 0;
+    }
+    .f_qiymatlari p, button{
+        font-size: 25px;
+        background-color: white;
+        border-radius: 10px;
+        border: 2px solid rgb(222, 222, 222);
+        padding: 10px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+    }
+    .f_qiymatlari p:hover, button:hover{
+        background-color: rgba(196, 196, 196, 0.448);
+    }
+    .f_changer_much{
+        width: 100%;
+        display: block;
+    }
+    .f_changer_much div{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .f_changer_much p{
+        font-size: 25px;
+    }
+    .f_changer_much input{
+        width: 40px;
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+        border: 2px solid aqua;
+    }
+    .f_changer_much button{
+        background-color: rgb(30, 157, 242);
+        color: white;
+        border: 0;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px 30px;
+        transition: all 0.3s linear;
+    }
+    .f_changer_much button:hover{
+        scale: 1.1;
+    }
+    .f_qiymat_div{
+        display: flex;
+        flex-direction: column;
+        max-height: calc(100vh - 150px);
+        height: auto;
+        overflow: hidden;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        /* box-sizing: border-box; */
+    }
+    .f_changer_much div, .f_karno_karta{
+        background-color: aliceblue;
+        border: 2px solid rgba(128, 128, 128, 0.281);
+        padding: 20px;
+        border-radius: 20px;
+    }
+    .f_karno_karta div{
+        display: block;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .f_karno_karta div div:not(:nth-child(1)){
+        display: flex;
+        align-items: center;
+    }
+    .f_karno_karta div:not(:nth-child(1)) span{
+        margin-right: 10px;
+    }
+    .f_karno_karta div p{
+        padding: 20px 25px;
+        font-size: 20px;
+        border: 2px solid rgba(128, 128, 128, 0.281);
+        background-color: white;
+        border-radius: 10px;
+        margin: 0;
+    }
+    .f_karno_karta div span{
+        font-size: 30px;
+    }
+    .f_karno_karta .span_span{
+        display: flex;
+        gap: 20px;
+        margin-left: 30px;
+    }
+    .f_karno_karta_div{
+        transform: translate(50% 50%);
+    }
+    #son_input{
+        width: 100%;
+        font-size: 20px;
+        border-radius: 10px;
+        padding: 10px;
+        outline: none;
+        border: 2px solid aqua;
+        margin-right: 20px;
+        box-sizing: border-box;
+    }
+    .input_son_form{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px;
+    }
+</style>
+<body>
+    <div class="container">
+        <ul>
+            <li onclick="menu_change(0)">
+                <a>F qiymat</a>
+            </li>
+            <li onclick="menu_change(1)">
+                <a>Son kiritish</a>
+            </li>
+            <li onclick="menu_change(2)">
+                <a>Karno karta</a>
+            </li>
+            <li onclick="menu_change(3)">
+                <a>Misol kiritish</a>
+            </li>
+        </ul>
+        <section class="section_1" style="display: block;">
+            <!-- F qiymat -->
+            <div class="f_qiymat">
+                <form class="f_qiymatlari">
+                    {% csrf_token %}
+                    <button type="submit">
+                        Karno Karta
+                    </button>
+                    <div class="f_qiymat_div">
+                    </div>
+                    
+                </form>
+                <form class="f_changer_much">
+                    {% csrf_token %}
+                    <div style="margin-bottom: 20px;">
+                        <p>
+                            O'zgaruvchilar soni
+                        </p>
+                        <input type="number" name="changer_son" value="2">
+                        <button type="submit">
+                            Ok
+                        </button>
+                    </div>
+                    <div style="display: block; text-align: center; ">
+                        <span style="font-size: 25px;">
+                            Soddalashtirilgan MDNSH
+                        </span>
+                        <p id="simple_mdnf">
+                            $$ \overline{A} + B $$
+                        </p>
+                    </div>
+                    <div style="display: block; text-align: center; margin-top: 20px; ">
+                        <span style="font-size: 25px;">
+                            Soddalashtirilgan MKNSH
+                        </span>
+                        <p id="simple_mknf">
+                            $$ (A + \overline{B}) $$
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="f_karno_karta" style="margin-top: 30px;">
+                <div class="f_karno_karta_div">
+                    <div class="span_span">
+                        <span>0</span>
+                        <span>1</span>
+                    </div>
+                    <div>
+                        <span>0</span>
+                        <p>0</p>
+                        <p>0</p>
+                    </div>
+                    <div>
+                        <span>1</span>
+                        <p>0</p>
+                        <p>1</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section_2" style="display: none;">
+            <!-- Son kiritish -->
+            <div class="f_qiymat">
+                <form class="f_qiymatlari son_input_form">
+                    <!-- {% csrf_token %} -->
+                    <input type="text" name="son_input", id="son_input" placeholder="Misol: 0,1,3" style="text-align: center;">
+                    <button type="submit">
+                        Karno Karta
+                    </button>
+                    <div class="f_qiymat_div son_input_div">
+                        <!-- <div>
+                            <span>
+                                F(${item})
+                            </span>
+                            <input type="hidden" name="f_${item}" id="f_${item}" value="0">
+                            <p id="f_${item}_btn" onclick="f_qiymat_give('f_${item}')">0</p>
+                        </div> -->
+                    </div>
+                    
+                </form>
+                <form class="f_changer_much">
+                    <div style="display: block; text-align: center; margin-top: 20px; ">
+                        <span style="font-size: 25px;">
+                            Soddalashtirilgan MDNSH
+                        </span>
+                        <p id="son_simple_mdnf">
+                            $$ \overline{A} + B $$
+                        </p>
+                    </div>
+                    <div style="display: block; text-align: center; margin-top: 20px; ">
+                        <span style="font-size: 25px;">
+                            Soddalashtirilgan MKNSH
+                        </span>
+                        <p id="son_simple_mknf">
+                            $$ (A + \overline{B}) $$
+                        </p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="f_karno_karta" style="margin-top: 30px;">
+                <div class="f_karno_karta_div son_input_karno_karta_div">
+                    <div class="span_span">
+                        <span>0</span>
+                        <span>1</span>
+                    </div>
+                    <div>
+                        <span>0</span>
+                        <p>0</p>
+                        <p>0</p>
+                    </div>
+                    <div>
+                        <span>1</span>
+                        <p>0</p>
+                        <p>1</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </section>
+        <section class="section_3" style="display: none;">
+            <!-- Karno Karta -->
+            <div>
+
+            </div>
+        </section>
+        <section class="section_4" style="display: none;">
+            <!-- Misol kiritish -->
+            <div>
+
+            </div>
+        </section>
+    </div>
+
+    <script>
+
+        document.querySelector('.son_input_form').addEventListener('submit', async function (e){
+            e.preventDefault()
+            let csrftoken = getCookie('csrftoken')
+
+            let formdata = new FormData(this)
+            let res = await fetch(`http://127.0.0.1:8000/son_input/`, {
+                method : "POST",
+                headers:{
+                    'X-CSRFToken' : csrftoken
+                },
+                body: formdata
+            })
+            let data = await res.json()
+            let f_qiymatlari = document.querySelector('.son_input_div')
+            f_qiymatlari.innerHTML = ''
+            let count = 0
+            data.f_oddiy_mount.forEach(item => {
+                
+                f_qiymatlari.innerHTML += `
+                    <div>
+                        <span>
+                            F(${item})
+                        </span>
+                        <input type="hidden" name="f_${item}" id="f_${item}" value="${data.f_qiymat[count]}">
+                        <p id="f_${item}_btn" onclick="f_qiymat_give('f_${item}')">${data.f_qiymat[count]}</p>
+                    </div>
+                `
+                count+=1
+            });
+            console.log(data);
+            
+
+            let arr1 = data.mdnf.split('')
+            for(let i=0; i<arr1.length ; i++){
+                if (arr1[i]=="'"){
+                    arr1[i] = ''
+                    arr1[i-1] = `\\overline{${arr1[i-1]}}`
+                }
+            }
+            data.mdnf = arr1.join('') 
+
+            let arr2 = data.mknf.split('')
+            for(let i=0; i<arr2.length ; i++){
+                if (arr2[i]=="'"){
+                    arr2[i] = ''
+                    arr2[i-1] = `\\overline{${arr2[i-1]}}`
+                }
+            }
+            data.mknf = arr2.join('')
+
+            document.querySelector('#son_simple_mdnf').innerText = `$$ ${data.mdnf} $$`
+            document.querySelector('#son_simple_mknf').innerText = `$$ ${data.mknf} $$`
+            // MathJax.typesetPromise()
+
+            let f_karno_karta_div = document.querySelector('.son_input_karno_karta_div')
+            f_karno_karta_div.innerHTML = ''
+            let satr = true
+            let ustun = true
+            data.changer_1_qiymat.forEach(row => {
+                let div = document.createElement('div')
+                if(ustun){
+                    let div_main = document.createElement('div')
+                    div_main.classList.add('span_span')
+                    data.changer_2_qiymat.forEach(column=>{
+                        let span = document.createElement('span')
+                        span.innerText = column
+                        div_main.appendChild(span)
+                    })
+                    f_karno_karta_div.appendChild(div_main)
+                    ustun = false
+                }
+                let span_div = document.createElement('span')
+                span_div.innerText = row 
+                div.appendChild(span_div)
+                data.changer_2_qiymat.forEach(column =>{
+                    let p = document.createElement('p')
+                    p.innerText = document.getElementById(`f_${row}${column}`).value
+                    div.appendChild(p)
+                })
+                f_karno_karta_div.appendChild(div)
+            });
+            MathJax.typesetPromise()
+
+        })
+
+        document.querySelector('.f_changer_much').addEventListener('submit', async function (e) {
+            e.preventDefault()
+            let csrftoken = getCookie('csrftoken')
+
+            let formdata = new FormData(this)
+            let res = await fetch(`http://127.0.0.1:8000/f_qiymat_much/`, {
+                method : "POST",
+                headers:{
+                    'X-CSRFToken' : csrftoken
+                },
+                body: formdata
+            })
+            let data = await res.json()
+            
+            let f_qiymatlari = document.querySelector('.f_qiymat_div')
+            f_qiymatlari.innerHTML = ''
+            data.f_qiymat.forEach(item => {
+                f_qiymatlari.innerHTML += `
+                    <div>
+                        <span>
+                            F(${item})
+                        </span>
+                        <input type="hidden" name="f_${item}" id="f_${item}" value="0">
+                        <p id="f_${item}_btn" onclick="f_qiymat_give('f_${item}')">0</p>
+                    </div>
+                `
+            });
+
+        })
+
+        document.querySelector('.f_qiymatlari').addEventListener('submit', async function (e){
+            e.preventDefault()
+            const csrftoken = getCookie('csrftoken');
+            let formdata = new FormData(this)
+            let res  = await fetch(`http://127.0.0.1:8000/f_qiymatlar/`, {
+                method: "POST",
+                headers: {
+                    'X-CSRFToken': csrftoken,
+                },
+                body: formdata
+            })
+            let data = await res.json()
+            let arr1 = data.mdnf.split('')
+            for(let i=0; i<arr1.length ; i++){
+                if (arr1[i]=="'"){
+                    arr1[i] = ''
+                    arr1[i-1] = `\\overline{${arr1[i-1]}}`
+                }
+            }
+            data.mdnf = arr1.join('') 
+
+            let arr2 = data.mknf.split('')
+            for(let i=0; i<arr2.length ; i++){
+                if (arr2[i]=="'"){
+                    arr2[i] = ''
+                    arr2[i-1] = `\\overline{${arr2[i-1]}}`
+                }
+            }
+            data.mknf = arr2.join('')
+
+            document.querySelector('#simple_mdnf').innerText = `$$ ${data.mdnf} $$`
+            document.querySelector('#simple_mknf').innerText = `$$ ${data.mknf} $$`
+            MathJax.typesetPromise()
+
+            let f_karno_karta_div = document.querySelector('.f_karno_karta_div')
+            f_karno_karta_div.innerHTML = ''
+            let satr = true
+            let ustun = true
+            data.changer_1_qiymat.forEach(row => {
+                let div = document.createElement('div')
+                if(ustun){
+                    let div_main = document.createElement('div')
+                    div_main.classList.add('span_span')
+                    data.changer_2_qiymat.forEach(column=>{
+                        let span = document.createElement('span')
+                        span.innerText = column
+                        div_main.appendChild(span)
+                    })
+                    f_karno_karta_div.appendChild(div_main)
+                    ustun = false
+                }
+                let span_div = document.createElement('span')
+                span_div.innerText = row 
+                div.appendChild(span_div)
+                data.changer_2_qiymat.forEach(column =>{
+                    let p = document.createElement('p')
+                    p.innerText = document.getElementById(`f_${row}${column}`).value
+                    div.appendChild(p)
+                })
+                f_karno_karta_div.appendChild(div)
+            });
+            MathJax.typesetPromise()
+        })
+
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+
+        function f_qiymat_give(id){
+            let f = document.getElementById(id)
+            f.value = f.value == 0 ? 1 : 0
+            document.getElementById(`${id}_btn`).innerText = f.value
+        }
+
+        function menu_change(much){
+            for(let i=0; i<4; i++){
+                let section = document.querySelector(`.section_${i+1}`)
+                if(i==much){
+                    section.style.display = 'block'
+                }else{
+                    section.style.display = 'none'
+                }
+            }
+            let ul = document.querySelector('ul')
+            ul.style.setProperty('--before-left', `calc(100% / 4 * ${much})`)
+            ul.style.setProperty('--before-width', `calc(100% / 9)`)
+            setTimeout(
+                function(){
+                    ul.style.setProperty('--before-width', `calc(100% / 4)`)
+                }
+                , 300
+            )
+        }
+
+        function changer_much_func(){
+            let f_qitmatlar =  document.querySelector('.f_qiymat_div')
+            f_qitmatlar.innerHTML = ''
+            let f_a = ['00','01', '10', '11']
+            f_a.forEach(item => {
+                f_qitmatlar.innerHTML+=`
+                    <div>
+                        <span>
+                            F(${item})
+                        </span>
+                        <input type="hidden" name="f_${item}" id="f_${item}" value="0">
+                        <p id="f_${item}_btn" onclick="f_qiymat_give('f_${item}')">0</p>
+                    </div>
+                `
+            });
+        }
+        changer_much_func()
+
+    </script>
+</body>
+</html>
